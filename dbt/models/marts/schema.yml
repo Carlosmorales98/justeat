@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: fact_comics_summary
+    description: Summary of comic views, cost, and reviews
+    columns:
+      - name: views
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+          - dbt_utils.expression_is_true:
+              expression: "<= 10000"
+
+      - name: review
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 1.0"
+          - dbt_utils.expression_is_true:
+              expression: "<= 10.0"
+
+      - name: cost
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: dim_comic_cleaned
+    description: Comic titles cleaned and filtered
+    columns:
+      - name: title_cleaned
+        tests:
+          - not_null

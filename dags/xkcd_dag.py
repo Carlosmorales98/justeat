@@ -46,4 +46,10 @@ with DAG(
         op_args=[614]
     )
 
-    task_fetch_transform_load >> task_specific_comic
+    # dbt transformations and tests are executed manually via CLI:
+    # docker compose run --rm dbt debug
+    # docker compose run --rm dbt run
+    # docker compose run --rm dbt test
+
+    task_fetch_transform_load >> task_specific_comic 
+

@@ -1,0 +1,12 @@
+xkcd_dbt_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      user: airflow
+      password: airflow
+      dbname: xkcd_db
+      schema: public
+      threads: 1
+      port: 5432

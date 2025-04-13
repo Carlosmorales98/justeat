@@ -44,6 +44,17 @@ services:
       - ./airflow-init:/opt/airflow/init
     depends_on:
       - postgres
+  
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:1.6.8
+    container_name: dbt
+    volumes:
+      - ./dbt:/usr/app
+    working_dir: /usr/app
+    environment:
+      DBT_PROFILES_DIR: /usr/app
+    depends_on:
+      - postgres
 
 volumes:
   postgres_data:

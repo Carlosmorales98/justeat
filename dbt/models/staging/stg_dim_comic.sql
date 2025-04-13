@@ -1,0 +1,1 @@
+SELECT * FROM {{ source('public', 'dim_comic') }}

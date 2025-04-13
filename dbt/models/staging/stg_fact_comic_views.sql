@@ -1,0 +1,1 @@
+SELECT * FROM {{ source('public', 'fact_comic_views') }}
